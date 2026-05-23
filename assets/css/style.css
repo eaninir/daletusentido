@@ -807,3 +807,6 @@ img { max-width: 100%; height: auto; display: block; }
 .button:hover {
   background-color: #2a55d4;
 }
+#contactanos{
+   text-align: center;
+}
