@@ -105,3 +105,76 @@ campos.forEach(campo => {
         campo.classList.remove("is-invalid");
     });
 });
+
+
+ // ==========================================
+    // 2. LÓGICA tarjetas  (FLECHAS Y AUTOMÁTICO)
+    // ==========================================
+const track = document.querySelector('.slider-track');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+// 1. Obtener las tarjetas originales
+let cards = document.querySelectorAll('.card');
+
+// 2. Clonar la primera y la última tarjeta
+const firstClone = cards[0].cloneNode(true);
+const lastClone = cards[cards.length - 1].cloneNode(true);
+
+// 3. Añadir los clones a la pista (Track)
+track.appendChild(firstClone); // El primero va al final
+track.insertBefore(lastClone, cards[0]); // El último va al inicio
+
+// 4. Actualizar la lista de tarjetas para incluir los clones
+cards = document.querySelectorAll('.card');
+
+// Configuración de posiciones
+let index = 1; // Empezamos en 1 porque la tarjeta index 0 ahora es el clon
+const gap = 20; // Espacio entre tarjetas (CSS)
+
+// Función para calcular el desplazamiento exacto
+function getSlideWidth() {
+  return cards[0].offsetWidth + gap;
+}
+
+// Posicionar el carrusel en la primera tarjeta real al cargar
+track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
+
+// Evento Botón Siguiente
+nextBtn.addEventListener('click', () => {
+  if (index >= cards.length - 1) return; // Evita clicks dobles rápidos
+  index++;
+  track.style.transition = "transform 0.4s ease-in-out";
+  track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
+});
+
+// Evento Botón Atrás
+prevBtn.addEventListener('click', () => {
+  if (index <= 0) return; // Evita clicks dobles rápidos
+  index--;
+  track.style.transition = "transform 0.4s ease-in-out";
+  track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
+});
+
+// El truco de magia: Cuando termina la animación, verificamos si es un clon
+track.addEventListener('transitionend', () => {
+  // Si llegamos al clon del final, saltamos a la primera tarjeta real
+  if (cards[index].innerHTML === firstClone.innerHTML) {
+    track.style.transition = "none"; // Quitamos la animación para que no se vea el salto
+    index = 1;
+    track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
+  }
+  
+  // Si llegamos al clon del principio, saltamos a la última tarjeta real
+  if (cards[index].innerHTML === lastClone.innerHTML) {
+    track.style.transition = "none";
+    index = cards.length - 2;
+    track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
+  }
+});
+
+// Re-calcular la posición si el usuario cambia el tamaño de la pantalla (Responsive)
+window.addEventListener('resize', () => {
+  track.style.transition = "none";
+  track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
+});
