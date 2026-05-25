@@ -1,0 +1,42 @@
+[
+  {
+    "codigo": "10001",
+    "descripcion": "rosas mixtas",
+    "precio": 7500
+  },
+  {
+    "codigo": "20002",
+    "descripcion": "rosas rosado pastel",
+    "precio": 6800
+  },
+  {
+    "codigo": "30003",
+    "descripcion": "cinta satin 4cm rojo",
+    "precio": 2200
+  },
+  {
+    "codigo": "40004",
+    "descripcion": "rosas morado oscuro",
+    "precio": 6800
+  },
+  {
+    "codigo": "50005",
+    "descripcion": "cinta satin 4cm burdeo",
+    "precio": 2200
+  },
+  {
+    "codigo": "410041",
+    "descripcion": "peluche stich 25cm.",
+    "precio": 8000
+  },
+  {
+    "codigo": "1340134",
+    "descripcion": "flor tulipanes blanco ",
+    "precio": 11000
+  },
+  {
+    "codigo": "6100610",
+    "descripcion": "peluche stitch & angela 1.20m.",
+    "precio": 80000
+  }
+]
