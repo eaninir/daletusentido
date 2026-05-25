@@ -6,7 +6,11 @@
   <title>Dale tu Sentido</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -165,17 +169,86 @@
   <button class="next-btn" aria-label="Siguiente">&#10095;</button>
 </section>
 
-  <footer class="footer-bottom">
+  <section id="contactanos" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Contáctanos</h2>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+          <form id="formContacto">
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre">
+                <div class="invalid-feedback">
+                  El nombre es obligatorio.
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                <div class="invalid-feedback">
+                  Ingresa un email válido.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="inputCelular" class="form-label">Celular</label>
+              <input type="tel" class="form-control" id="inputCelular" placeholder="+56912345678">
+              <div class="invalid-feedback">
+                Ingresa un celular válido.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="inputEscribenos" class="form-label">Escríbenos</label>
+
+              <textarea class="form-control" id="inputEscribenos" rows="5" maxlength="500"
+                placeholder="Escribe aquí tu mensaje..."></textarea>
+
+              <small class="text-muted">
+                Máximo 500 caracteres.
+              </small>
+
+              <div class="invalid-feedback">
+                Debes escribir al menos 10 caracteres.
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+              Enviar
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-bottom">
     <p>© 2026 Dale tu Sentido</p>
-    <div class="payments">
+    <div>
       <span>💳 Webpay</span>
       <span>💳 Mercado Pago</span>
       <span>💳 Transferencia</span>
     </div>
-  </footer>
+  </div>
 
-  <a href="https://wa.me/56933393222?text=Hola!%20Me%20interesa%20consultar..." class="whatsapp-float" target="_blank">💬</a>
+  <div class="cart-toast" id="cartToast">✅ Producto agregado al carrito</div>
+
+  <a href="https://wa.me/56933393222?text=Hola!%20Me%20interesa%20consultar%20por%20sus%20productos%20de%20Dale%20tu%20Sentido"
+    class="whatsapp-float" target="_blank">
+    <span class="whatsapp-icon">💬</span>
+  </a>
 
   <script src="assets/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 </body>
 </html>

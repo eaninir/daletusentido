@@ -313,3 +313,6 @@ img { max-width: 100%; height: auto; display: block; }
 
 .prev-btn { left: -50px; } /* Saca el botón un poco a la izquierda */
 .next-btn { right: -50px; } /* Saca el botón un poco a la derecha */
+#contactanos{
+   text-align: center;
+}
