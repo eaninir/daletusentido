@@ -1,0 +1,76 @@
+// Referencias a los elementos del DOM
+const loader = document.getElementById('loader');
+const errorAlert = document.getElementById('error-alert');
+const errorMessage = document.getElementById('error-message');
+const usuariosContainer = document.getElementById('usuarios-container');
+
+// URL de una API pública real (Lista de 10 usuarios ficticios)
+const API_URL = 'https://jsonplaceholder.typicode.com/users';
+
+// Función principal asíncrona
+async function obtenerUsuarios() {
+    try {
+        // 1. Mostrar estado de carga y limpiar estados anteriores
+        loader.classList.remove('d-none');
+        errorAlert.classList.add('d-none');
+        usuariosContainer.innerHTML = '';
+
+        // 2. Llamar a la API real
+        const respuesta = await fetch(API_URL);
+
+        // Controlar manualmente si la API responde con un error (ej. 404 o 500)
+        if (!respuesta.ok) {
+            throw new Error(`Error de servidor: Código ${respuesta.status}`);
+        }
+
+        // 3. Transformar la respuesta a JSON
+        const usuarios = await respuesta.json();
+
+        // 4. Renderizar los resultados en el DOM de forma dinámica
+        renderizarUsuarios(usuarios);
+
+    } catch (error) {
+        // 5. Manejar el Estado de Error si algo falla (sin internet, URL mala, etc.)
+        mostrarError(error.message);
+    } finally {
+        // 6. Apagar el cargando pase lo que pase (éxito o fallo)
+        loader.classList.add('d-none');
+    }
+}
+
+// Función encargada exclusivamente de pintar los datos en el DOM
+function renderizarUsuarios(listaUsuarios) {
+    const fragment = document.createDocumentFragment();
+
+    listaUsuarios.forEach(usuario => {
+        // Creamos la columna responsiva de Bootstrap
+        const divCol = document.createElement('div');
+        divCol.className = 'col-md-6 col-lg-4';
+
+        // Diseñamos una tarjeta limpia para cada usuario de la API
+        divCol.innerHTML = `
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">${usuario.name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@${usuario.username}</h6>
+                    <p class="card-text mb-1"><strong>✉️ Email:</strong> ${usuario.email}</p>
+                    <p class="card-text mb-1"><strong>🏢 Compañía:</strong> ${usuario.company.name}</p>
+                    <p class="card-text"><strong>📍 Ciudad:</strong> ${usuario.address.city}</p>
+                </div>
+            </div>
+        `;
+        fragment.appendChild(divCol);
+    });
+
+    // Inyectamos todo el bloque al contenedor del DOM de una sola vez
+    usuariosContainer.appendChild(fragment);
+}
+
+// Función para activar visualmente la alerta de error
+function mostrarError(mensaje) {
+    errorMessage.textContent = mensaje;
+    errorAlert.classList.remove('d-none');
+}
+
+// Ejecutar la función inmediatamente al cargar la página
+document.addEventListener('DOMContentLoaded', obtenerUsuarios);
