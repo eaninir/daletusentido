@@ -178,3 +178,33 @@ window.addEventListener('resize', () => {
   track.style.transition = "none";
   track.style.transform = `translateX(-${getSlideWidth() * index}px)`;
 });
+
+//Dark mode IAC
+const btnLight = document.getElementById("btnLight");
+const btnDark = document.getElementById("btnDark");
+
+btnDark.addEventListener("click", activarDarkMode);
+function activarDarkMode() {
+    document.documentElement.style.setProperty("--bg", "rgb(26, 26, 46)");
+    document.documentElement.style.setProperty("--text", "rgb(255, 255, 255)");
+    document.documentElement.style.setProperty("--white", "rgb(26, 26, 46)");
+    document.documentElement.style.setProperty("--border", "rgb(68, 68, 68)");
+    document.documentElement.style.setProperty("--text-muted", "rgb(255, 255, 255)");
+    localStorage.setItem("tema", "dark");
+}
+btnLight.addEventListener("click", activarLightMode);
+function activarLightMode() {
+    document.documentElement.style.setProperty("--bg", "#fafafa");
+    document.documentElement.style.setProperty("--text", "#2d2d2d");
+    document.documentElement.style.setProperty("--white", "#ffffff");
+    document.documentElement.style.setProperty("--border", "#e5e7eb");
+    document.documentElement.style.setProperty("--text-muted", "rgb(68, 68, 68)");
+    localStorage.setItem("tema", "light");
+}
+const temaGuardado = localStorage.getItem("tema");
+
+if (temaGuardado === "dark") {
+    activarDarkMode();
+} else {
+    activarLightMode();
+}

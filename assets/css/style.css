@@ -19,6 +19,9 @@
   --radius-sm: 8px;
   --shadow: 0 4px 15px rgba(0,0,0,0.08);
   --font-body: 'Poppins', sans-serif;
+  --darck-mode: rgb(26,26,46);
+  --hero-light: #eee;
+  --text-muted: #6b7280;
 }
 
 html { scroll-behavior: smooth; }
@@ -73,7 +76,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 800;
   font-size: 1.2rem;
   line-height: 1;
-  color: var(--dark);
+  color: var(--text);
 }
 .logo-sub {
   display: block;
@@ -128,7 +131,7 @@ img { max-width: 100%; height: auto; display: block; }
 .mobile-menu.active { display: flex !important; }
 
 /* ---- HERO SLIDER ---- */
-.hero { position: relative; overflow: hidden; min-height: 450px; background: #eee; }
+.hero { position: relative; overflow: hidden; min-height: 450px; background-color: var(--hero-light); }
 .hero-slide {
   display: none; align-items: center; padding: 48px 8vw; min-height: 450px;
   background-size: cover; background-position: center;
@@ -316,3 +319,39 @@ img { max-width: 100%; height: auto; display: block; }
 #contactanos{
    text-align: center;
 }
+
+.dark-mode {
+  background-color: var(--white); 
+  color: rgb(107, 114,128);         
+  border: 1px solid var(--white); 
+}
+.dark-mode:active,
+.dark-mode.show,
+.dark-mode:hover {
+  background-color: var(--white); 
+  color: rgb(107, 114,128) !important;     
+   border: 1px solid var(--white)!important;   
+}
+.dropdown-menu {
+  width: 100%;
+  min-width: unset;
+}
+.dropdown-item {
+  width: 100%;
+  text-align: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(255, 244, 229);
+  color: var(--primary) !important;
+}
+.dropdown-item.show {
+  background-color: rgb(255, 244, 229);
+  color: var(--primary) !important;
+}
+.text-muted{
+  color: var(--text-muted) !important;
+}
+
