@@ -169,6 +169,8 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: 1300px;
   margin: 0 auto;
   justify-content: center;
+  position: relative;
+  align-items: center;
 }
 .slide-container {
   flex: 0 0 100%;
@@ -183,6 +185,7 @@ img { max-width: 100%; height: auto; display: block; }
   flex-direction: column;
   height: 100%;
   transition: transform 0.3s;
+  min-width: 300px
 }
 .card:hover { transform: translateY(-5px); }
 .card-img {
@@ -270,13 +273,6 @@ img { max-width: 100%; height: auto; display: block; }
    slide tarjetas
    ============================================================ */
 
-.slider-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  max-width: 1000px; /* Ajusta según el ancho de tu diseño */
-  margin: 0 auto;
-}
 
 .slider-container {
   overflow: hidden; /* Oculta las tarjetas que quedan fuera de vista */
@@ -287,11 +283,6 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   gap: 20px; /* Espacio entre tarjetas */
   transition: transform 0.4s ease-in-out; /* Hace el movimiento suave */
-}
-
-.card {
-  min-width: 300px; /* Ancho de cada tarjeta */
-  /* Tu estilo actual de la tarjeta va aquí */
 }
 
 /* Estilos para los botones */
