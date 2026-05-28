@@ -184,6 +184,7 @@ const btnLight = document.getElementById("btnLight");
 const btnDark = document.getElementById("btnDark");
 
 btnDark.addEventListener("click", activarDarkMode);
+
 function activarDarkMode() {
     document.documentElement.style.setProperty("--bg", "rgb(26, 26, 46)");
     document.documentElement.style.setProperty("--text", "rgb(255, 255, 255)");
@@ -193,6 +194,7 @@ function activarDarkMode() {
     localStorage.setItem("tema", "dark");
 }
 btnLight.addEventListener("click", activarLightMode);
+
 function activarLightMode() {
     document.documentElement.style.setProperty("--bg", "#fafafa");
     document.documentElement.style.setProperty("--text", "#2d2d2d");
